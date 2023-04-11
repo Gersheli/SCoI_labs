@@ -1,6 +1,5 @@
 import re
-from reg_exp_patterns import SENTENCE, NON_DECLARATIVE_SENTENCE, WORD, NUMBER, \
-    SINGLE_WORD_ABBREVIATION, TWO_WORD_ABBREVIATIONS, THREE_WORD_ABBREVIATIONS
+from task1.reg_exp_patterns import SENTENCE, SINGLE_WORD_ABBREVIATION, TWO_WORD_ABBREVIATIONS
 
 
 def count_sentences(text: str):
@@ -12,8 +11,5 @@ def count_sentences(text: str):
 
     for abbrev in TWO_WORD_ABBREVIATIONS:
         amount -= lower_text.count(abbrev) * 2
-
-    for abbrev in THREE_WORD_ABBREVIATIONS:
-        amount -= text.lower().count(abbrev) * 3
 
     return amount
