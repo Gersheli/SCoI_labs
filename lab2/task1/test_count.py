@@ -78,5 +78,24 @@ class TestAvgWordLength(unittest.TestCase):
                          'Average len with numbers test: result isn\'t ' + str(expected))
 
 
+class TestGetTopKRepeatedNgram(unittest.TestCase):
+    def test_empty_text(self):
+        expected = []
+        self.assertEqual(statistic_of_text.get_top_k_repeated_n_grams(''), expected,
+                         'Empty text test: result isn\'t ' + str(expected))
+
+    def test_text_without_repeated_anagrams(self):
+        text = 'Hello, My name is Victor. And theres no repeated words.'
+        expected = [('hello my name', 1), ('my name is', 1), ('name is victor', 1)]
+        self.assertEqual(statistic_of_text.get_top_k_repeated_n_grams(text, 3, 3), expected,
+                         'Average len with abbreviations test: result isn\'t ' + str(expected))
+
+    def test_text_with_repeated_sequence(self):
+        text = 'hello its repeated seq some text aaa its repeated seq some text aaa some text aaa'
+        expected = [('some text aaa', 3), ('its repeated seq', 2), ('repeated seq some', 2)]
+        self.assertEqual(statistic_of_text.get_top_k_repeated_n_grams(text, 3, 3), expected,
+                         'Average len with numbers test: result isn\'t ' + str(expected))
+
+
 if __name__ == '__main__':
     unittest.main
