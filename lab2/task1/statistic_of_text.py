@@ -1,6 +1,10 @@
 import re
-from task1.reg_exp_patterns import SENTENCE, NON_DECLARATIVE_SENTENCE, SINGLE_WORD_ABBREVIATION, \
-    TWO_WORD_ABBREVIATIONS, NUMBER, WORD
+from task1.reg_exp_patterns import (SENTENCE,
+                                    NON_DECLARATIVE_SENTENCE,
+                                    SINGLE_WORD_ABBREVIATION,
+                                    TWO_WORD_ABBREVIATIONS,
+                                    NUMBER,
+                                    WORD)
 
 
 def count_sentences(text: str) -> int:

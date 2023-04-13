@@ -17,7 +17,8 @@ class Container:
         self._storage.add(key)
 
     def remove(self, key):
-        self._storage.remove(key)
+        if key in self._storage:
+            self._storage.remove(key)
 
     def find(self, key) -> bool:
         return key in self._storage
@@ -41,4 +42,5 @@ class Container:
     def switch(self, username: str):
         self._username = username
         self._filename = f'./data/{username}.json'
+        self._storage.clear()
         self.load()

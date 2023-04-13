@@ -8,7 +8,6 @@ ALL_FUNCTIONS = '''
 * list – print all elements of container;
 * grep <regex> – check the value in the container by regular expression, print each found or “No such elements” if nothing is;
 * save - save container to file
-* load – load container from file;
 * switch – switches to another user.
 * exit - leave from program
 * help - show all commands
@@ -22,7 +21,9 @@ def parse_command():
         print('Input must be not empty!')
 
     command = user_input[0]
-    arguments = user_input[1] if len(user_input) > 1 else None
+    arguments = ''
+    if len(user_input) > 1:
+        arguments = user_input[1]
     return command, arguments
 
 
@@ -47,10 +48,11 @@ def exec_command(command: str, arguments: str, storage: Container) -> bool:
         case 'list':
             print(storage.list())
         case 'find':
-            arguments_list = arguments.split()
-            for el in arguments_list:
-                found = storage.find(el)
-                print(f'{el} found' if found else f'{el} not found')
+            if len(arguments) != 0:
+                arguments_list = arguments.split()
+                for el in arguments_list:
+                    found = storage.find(el)
+                    print(f'{el} found' if found else f'{el} not found')
         case 'grep':
             res = storage.grep(arguments)
             if len(res) != 0:
@@ -86,4 +88,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
