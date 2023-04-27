@@ -70,7 +70,7 @@ def exec_command(command: str, arguments: str, storage: Container) -> bool:
             storage.switch(arguments)
             greeting(arguments)
         case _:
-            print('Such command not supported')
+            print('Such command is not supported')
     return True
 
 

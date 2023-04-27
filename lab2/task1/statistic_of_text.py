@@ -1,5 +1,5 @@
 import re
-from task1.reg_exp_patterns import (SENTENCE,
+from reg_exp_patterns import (SENTENCE,
                                     NON_DECLARATIVE_SENTENCE,
                                     SINGLE_WORD_ABBREVIATION,
                                     TWO_WORD_ABBREVIATIONS,
