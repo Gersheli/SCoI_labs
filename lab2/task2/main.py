@@ -8,6 +8,7 @@ ALL_FUNCTIONS = '''
 * list – print all elements of container;
 * grep <regex> – check the value in the container by regular expression, print each found or “No such elements” if nothing is;
 * save - save container to file
+* load - loads container from file
 * switch – switches to another user.
 * exit - leave from program
 * help - show all commands
@@ -28,7 +29,7 @@ def parse_command():
 
 
 def ask_save_container(storage: Container):
-    answer = input('Do you want to save container?(y/n): ')
+    answer = input('Do you want to save the container?(y/n): ')
     if answer == 'y':
         storage.save()
 
@@ -69,6 +70,10 @@ def exec_command(command: str, arguments: str, storage: Container) -> bool:
             ask_save_container(storage)
             storage.switch(arguments)
             greeting(arguments)
+        case 'load':
+            ask_save_container(storage)
+            storage.load()
+            print(storage.list())
         case _:
             print('Such command is not supported')
     return True

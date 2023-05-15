@@ -14,6 +14,9 @@ def count_sentences(text: str) -> int:
     for abbrev in SINGLE_WORD_ABBREVIATION:
         amount -= text.count(abbrev)
 
+    if text[1] == ".":
+        amount -= 1
+
     for abbrev in TWO_WORD_ABBREVIATIONS:
         amount -= text.count(abbrev) * 2
 
